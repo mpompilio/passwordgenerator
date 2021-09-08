@@ -8,15 +8,23 @@ var charCount;
 function generatePassword() {
 
     //Asking how many characters the user wants
-    var charCount = parseInt(window.prompt("How long would you like the password to be? (Must be between 8 to 128 characters)", ""));
+    var charCount = window.prompt("How long would you like the password to be? (Must be between 8 to 128 characters)");
 
-    if (charCount < 8 || charCount > 128) {
+    
+    if (charCount === null) {
+        window.alert("Canceling generation! Goodbye!");
+        return;
+    }
+    else if (charCount < 8 || charCount > 128) {
         window.alert("Please choose between 8 to 128 characters!");
-        generatePassword();
-    } else if (isNaN(charCount)) {
+        return generatePassword();
+        
+    } 
+    else if (isNaN(charCount)) {
         window.alert("Please Enter a number!");
-        generatePassword();
-    } else {
+        return generatePassword();
+    } 
+    else {
         //console log
         console.log("User wants a password with " + charCount + " characters.");
     }
